@@ -1,0 +1,19 @@
+---
+- hosts: fortigate
+  collections:
+   - fortinet.fortios
+  connection: httpapi
+  vars:
+   ansible_connection: httpapi
+   ansible_python_interpreter: /usr/bin/python3
+   vdom: "root"
+   ansible_httpapi_use_ssl: yes
+   ansible_httpapi_validate_certs: no
+   ansible_httpapi_port: 443
+  gather_facts: no
+  tasks:
+  - name: Configure global attributes.
+    fortios_system_global:
+      vdom:  "{{ vdom }}"
+      system_global:
+        admintimeout: "23"
